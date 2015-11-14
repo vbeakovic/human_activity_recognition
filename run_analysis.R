@@ -73,4 +73,4 @@ activity_data <- tbl_df(activity_data)
 # extract only mean and sd measurments
 activity_data_mean_std <- select(activity_data, subjects, activity, 
                                  ends_with("mean()"), ends_with("std()"))
-colnames(activity_data)
+
