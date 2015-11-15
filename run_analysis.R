@@ -14,7 +14,23 @@ variable_names <- read.table("./uci_har_dataset/features.txt",
                                 colClasses = c("NULL", "character"))
 # Extract a character vector with variable names
 variable_names <- as.vector(variable_names$V2)
-
+# applying consistent character sperarator in variable names and removing parenthesis
+variable_names <- gsub("-", "_", variable_names, ignore.case = FALSE, perl = FALSE, fixed = TRUE, useBytes = FALSE)
+variable_names <- gsub("()", "", variable_names, ignore.case = FALSE, perl = FALSE, fixed = TRUE, useBytes = FALSE)
+variable_names <- gsub(",", "_", variable_names, ignore.case = FALSE, perl = FALSE, fixed = TRUE, useBytes = FALSE)
+variable_names <- gsub("(", "_", variable_names, ignore.case = FALSE, perl = FALSE, fixed = TRUE, useBytes = FALSE)
+variable_names <- gsub(")_", "_", variable_names, ignore.case = FALSE, perl = FALSE, fixed = TRUE, useBytes = FALSE)
+variable_names <- gsub(")", "", variable_names, ignore.case = FALSE, perl = FALSE, fixed = TRUE, useBytes = FALSE)
+#which(duplicated(variable_names)==TRUE)
+variable_names[303:316] <- paste(variable_names[303:316], "_X", sep = "")
+variable_names[317:330] <- paste(variable_names[317:330], "_Y", sep = "")
+variable_names[331:344] <- paste(variable_names[331:344], "_Z", sep = "")
+variable_names[382:395] <- paste(variable_names[382:395], "_X", sep = "")
+variable_names[396:409] <- paste(variable_names[396:409], "_Y", sep = "")
+variable_names[410:423] <- paste(variable_names[410:423], "_Z", sep = "")
+variable_names[461:474] <- paste(variable_names[461:474], "_X", sep = "")
+variable_names[475:488] <- paste(variable_names[475:488], "_Y", sep = "")
+variable_names[489:502] <- paste(variable_names[489:502], "_Z", sep = "")
 ## Step 3 ##
 # A function to read in the training and test data sets, and combine them with
 # the subjets and activity data
@@ -71,6 +87,11 @@ activity_data <- tbl_df(activity_data)
 
 ## Step 8 ##
 # extract only mean and sd measurments
+# the logic of extrations is two select only mean and std pairs of mesurments 
+# 33 + 33 measurments of each plus the subjetcs and activity data
 activity_data_mean_std <- select(activity_data, subjects, activity, 
-                                 ends_with("mean()"), ends_with("std()"))
+                                 contains("mean"), contains("std"), -(contains("meanFreq")), -(contains("angle")))
+
+
+
 
