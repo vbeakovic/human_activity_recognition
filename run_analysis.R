@@ -2,6 +2,7 @@
 ## run_analysis.R ##
 ####################
 
+
 ## Step 1 - preparation step ##
 # Read in activities
 activity_labels <- read.table("./uci_har_dataset/activity_labels.txt", 
@@ -98,7 +99,7 @@ activity_data <- tbl_df(activity_data)
 # extract only mean and sd measurments
 # the logic of extrations is to select only pairs of measurment with mean and std 
 # values (freq and angle variables not included). This gives 33 + 33 measurments 
-# of each plus the subjetcs and activity data
+# of each plus the subjects and activity data
 activity_data_mean_std <- select(activity_data, subjects, activity, 
                                  contains("mean"), contains("std"), 
                                  -(contains("meanFreq")), -(contains("angle")))
@@ -124,14 +125,16 @@ for (i in 1:length(originals)) {
                                   useBytes = FALSE)        
 }
 descriptive_names <- tolower(descriptive_names)
+# Apply descriptive column names
+names(activity_data_mean_std) <- descriptive_names
 
 ## Step 10 ##
 # Create a new data frame with mean measurment values per subject and activity
 activity_data_sumarized <- group_by(activity_data_mean_std, subjects, activity) %>% summarise_each(funs(mean))
-# Apply descriptive column names
-names(activity_data_sumarized) <- descriptive_names
+
+
 
 ## Step 11 ##
-# Write final date to a txt file
+# Write final data to a txt file
 write.table(activity_data_sumarized, file = "activity_data_sumarized.txt", row.names = FALSE)
 
