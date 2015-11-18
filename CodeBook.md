@@ -9,7 +9,7 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details.
 
 ## Variables
-The final data set is a subset of the source data  containing mean and standard deviations of the measurments for each activity and each subject.
+The final data set was obtained by merging and the train and test data sets of the original study. After merging the data was subsetted to extract   mean and standard deviations of the measurments for each activity and each subject. Additionaly variable names were transformed to be more desctiptive and activity descriptions were added as factor levels.
 
 ### Meaning of letters and words in variable names
 1. "t" means a time domain measurment
@@ -31,7 +31,10 @@ The final data set is a subset of the source data  containing mean and standard 
 * subjects - integer
 * all measurments - numeric
 
+
+### List of variables
 The data se has the following variables coded as described above:
+
 subjects,                                   activity,                                   t_body_acceleration_mean_x,                
 t_body_acceleration_mean_y,                 t_body_acceleration_mean_z,                 t_gravity_acceleration_mean_x,             
 t_gravity_acceleration_mean_y,              t_gravity_acceleration_mean_z,              t_body_acceleration_jerk_mean_x,           
