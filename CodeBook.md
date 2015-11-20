@@ -8,8 +8,22 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 
 The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details.
 
+## Files used to import data
+* "./uci_har_dataset/activity_labels.txt" - a file containing descriptive activity labels
+* "./uci_har_dataset/features.txt" - a file containing the variable names
+* ".uci_har_dataset/test/X_test.txt" - file containing test data set measurments
+* ".uci_har_dataset/test/subject_test.txt" - a file containing subject id's for each observation in the X_test file
+* ".uci_har_dataset/test/y_test.txt" - a file containing activities for each observation in the X_test file
+* ".uci_har_dataset/train/X_train.txt" - file containing train data set measurments
+* ".uci_har_dataset/train/subject_train.txt" - a file containing subject id's for each observation in the X_train file
+* ".uci_har_dataset/train/y_train.txt" - a file containing activities for each observation in the X_train file
+
+## Transformations
+The final data set was obtained by merging the train and test data sets of the original study. After merging the data was subsetted to extract   mean and standard deviations of the measurments for each activity and each subject. Additionaly variable names were imported abd transformed to be more desctiptive and activity descriptions were imported and added as factor levels.
+
+
 ## Variables
-The final data set was obtained by merging and the train and test data sets of the original study. After merging the data was subsetted to extract   mean and standard deviations of the measurments for each activity and each subject. Additionaly variable names were transformed to be more desctiptive and activity descriptions were added as factor levels.
+
 
 ### Meaning of letters and words in variable names
 1. "t" means a time domain measurment
@@ -31,6 +45,8 @@ The final data set was obtained by merging and the train and test data sets of t
 * subjects - integer
 * all measurments - numeric
 
+### Units
+* variables are normalized and bounded within [-1,1]
 
 ### List of variables
 The data se has the following variables coded as described above:
@@ -58,10 +74,6 @@ f_body_acceleration_st_dev_z,               f_body_acceleration_jerk_st_dev_x,  
 f_body_acceleration_jerk_st_dev_z,          f_body_gyroscope_st_dev_x,                  f_body_gyroscope_st_dev_y,                 
 f_body_gyroscope_st_dev_z,                  f_body_acceleration_magnitude_st_dev,       f_body_acceleration_jerk_magnitude_st_dev, 
 f_body_gyroscope_magnitude_st_dev,          f_body_gyroscope_jerk_magnitude_st_dev              
-
-
-
-
 
 
 ## Acknowledgements
