@@ -22,7 +22,7 @@ The script does the following:
 * Appropriately labels the data set with descriptive variable names 
 * From the merged dataset, creates a second, independent tidy data set with the average of each variable for each activity and each subject
 
-The script is arraned in steps, each step is performing a complete or part of the above requirements.
+The script is arranged in steps, each step is performing a complete or part of the above requirements.
 
 Step 1 - 
 Reads in the activity labels and creates a character vector with activity label which is later on used to create descriptive factor levels for the acitivty variable
