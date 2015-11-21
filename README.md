@@ -43,7 +43,7 @@ Step 6 -
 Merge training and test datasets
 
 Step 7 -
-Creates a local data frame
+Creates a local data frame with dplyr
 
 Step 8 -
 Extracts only mean and standard deviation measurments
